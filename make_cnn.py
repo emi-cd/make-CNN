@@ -194,9 +194,9 @@ def train(X_train, y_train, model, name, valid, debug=False):
 	logDir = 'models/log_' + name
 	if not os.path.isdir(logDir):
 		os.makedirs(logDir)
-	es_cb = EarlyStopping(monitor='val_loss', patience=2, mode='auto')
+	es_cb = EarlyStopping(monitor='val_loss', patience=3, mode='auto', save_best_only=True)
 	tb_cb = TensorBoard(log_dir=logDir)
-	history = model.fit(X_train, y_train, batch_size=32, epochs=1, callbacks=[tb_cb, es_cb], validation_data=valid, initial_epoch=0)
+	history = model.fit(X_train, y_train, batch_size=32, epochs=100, callbacks=[tb_cb, es_cb], validation_data=valid, initial_epoch=0)
 
 	return model
 
