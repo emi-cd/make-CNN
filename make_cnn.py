@@ -1,19 +1,21 @@
 # coding: utf-8
 
 """
-	fine_tuning.py
+	make_cnn.py
 	~~~~~~~~~~~~~~~~
 
-	Fine-tuning using pre-trained models.
+	Make CNN models.
 
 	Dependency::
 		python : 3.6.*  
 		Package : Please see requirements.txt
 
 	Usage::
-	>>> python make_cnn.py --debug --file XY_224.txt -F -M VGG
-	or
-	>>> python make_cnn.py --debug --file XY_224.txt
+		- Using pre-trained model  
+			>>> python make_cnn.py --debug --file XY_224.txt -F -M VGG
+		or 
+		- Using own model 
+			>>> python make_cnn.py --debug --file XY_224.txt
 """
 from keras.applications import VGG16, ResNet50, InceptionV3
 from keras import models
@@ -33,6 +35,7 @@ IMAGE_SIZE = 224
 VGG = 'VGG'	# VGG16
 RN = 'RN'	# ResNet50
 I = 'I' 	# InceptionV3
+X = 'X' # Xception
 
 
 def main(args):
@@ -54,6 +57,8 @@ def main(args):
 			conv = ResNet50(weights='imagenet', include_top=False, input_shape=X_train.shape[1:])
 		elif args.model == I:
 			conv = InceptionV3(weights='imagenet', include_top=False, input_shape=X_train.shape[1:])
+		elif args.model == X:
+			conv = Xception(weights='imagenet', include_top=False, input_shape=X_train.shape[1:])
 		else:
 			print('You can not choose ' + args.model + '!')
 			exit(1)
@@ -211,8 +216,8 @@ if __name__ == '__main__':
 				add_help=True,
 				)
 	parser.add_argument('-F', '--fine', help='Using fine-tuning.', action='store_true', required=False, default=False)
-	parser.add_argument('-M', '--model', help="You can choose pretrained model when you use fine-tuning option. ['VGG', 'RN', 'I']. VGG is VGG16, RN is ResNet50 and I is InceptionV3." ,
-							 required=False, choices=[VGG, RN, I], default=VGG)
+	parser.add_argument('-M', '--model', help="You can choose pretrained model when you use fine-tuning option. ['VGG', 'RN', 'I', 'X']. VGG is VGG16, RN is ResNet50, I is InceptionV3 and X is Xception." ,
+							 required=False, choices=[VGG, RN, I, X], default=VGG)
 	parser.add_argument('--file', help='If you want to use processed data. Please enter the name of data file. It should be used joblib.', required=False, default='')
 	parser.add_argument('-D', '--traindata', help="Path to the traindata. That directory should have label name. Default is './train_data'.", 
 							required=False, default='./train_data')
