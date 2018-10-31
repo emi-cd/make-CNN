@@ -54,6 +54,10 @@ You can make cnn model.
 	 - InceptionV3  
    - Xception  
 
+- output
+It is debug mode, but example of output.
+![output image](https://github.com/emi-cd/learn-CNN/blob/readme/imgs/output.png?raw=true)
+
 - Argment
   - '-F', '--fine' : Use fine-tuning. And you have to choice origin model. Please use '-M'.
   - '-M', '--model' : You can choose pretrained model when you use fine-tuning option. Choose from ['VGG', 'RN', 'I', 'X']. VGG is VGG16, RN is ResNet50, I is InceptionV3 and X is Xception.
@@ -62,9 +66,11 @@ You can make cnn model.
   - '-N', '--name' : The neme of model. Default is 'model'.
   - '--debug' : Debug mode. Show more information when it running.
 
+
 ## predict_mov.py
 Demonstrate using by CNN. It shows posibility.  
 If you want to stop this program, please enter 'q'.
+![demo movie](https://github.com/emi-cd/learn-CNN/blob/readme/imgs/demo.png?raw=true)
 
 
 # Compare models
