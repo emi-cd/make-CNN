@@ -38,6 +38,7 @@ I = 'I' 	# InceptionV3
 X = 'X' # Xception
 
 
+
 def main(args):
 	if not os.path.isdir(args.traindata):
 		print('Plese choose valid path : ' + args.traindata)
@@ -76,7 +77,7 @@ def main(args):
 		print(trained_model.evaluate(X_test, y_test))
 
 	# Save the model
-	trained_model.save('models/' + args.name + '.h5')
+	trained_model.save('Models/' + args.name + '/' + args.name + '.h5')
 
 
 def make_model_fine(model, conv, debug=False):
@@ -196,10 +197,11 @@ def train(X_train, y_train, model, name, valid, debug=False):
 		:param valid: valid data for validation_data, (x_text, y_test)
 		:return model: trained model
 	"""
-	logDir = 'models/log_' + name
+	baseSaveDir = "./Models/" + name 
+	logDir = baseSaveDir + "/logs"
 	if not os.path.isdir(logDir):
 		os.makedirs(logDir)
-	es_cb = EarlyStopping(monitor='val_loss', patience=3, mode='auto', save_best_only=True)
+	es_cb = EarlyStopping(monitor='val_loss', patience=3, mode='auto', restore_best_weights=True)
 	tb_cb = TensorBoard(log_dir=logDir)
 	history = model.fit(X_train, y_train, batch_size=32, epochs=100, callbacks=[tb_cb, es_cb], validation_data=valid, initial_epoch=0)
 
@@ -215,7 +217,7 @@ if __name__ == '__main__':
 				epilog='end',
 				add_help=True,
 				)
-	parser.add_argument('-F', '--fine', help='Using fine-tuning.', action='store_true', required=False, default=False)
+	parser.add_argument('-F', '--fine', help='Use fine-tuning.', action='store_true', required=False, default=False)
 	parser.add_argument('-M', '--model', help="You can choose pretrained model when you use fine-tuning option. ['VGG', 'RN', 'I', 'X']. VGG is VGG16, RN is ResNet50, I is InceptionV3 and X is Xception." ,
 							 required=False, choices=[VGG, RN, I, X], default=VGG)
 	parser.add_argument('--file', help='If you want to use processed data. Please enter the name of data file. It should be used joblib.', required=False, default='')

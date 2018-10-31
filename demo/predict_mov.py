@@ -5,6 +5,7 @@
 
 	Demonstrate using by CNN.
 	This script use USB cam and show posibility.
+	If you want to stop this program, please enter 'q'.
 
 	Dependency::
 		python : 3.6.* 
@@ -39,12 +40,12 @@ def convert_data(image):
 
 
 cap = cv2.VideoCapture(1)
-model = load_model('../models/model.h5')
+model = load_model('../Models/model/model.h5')
 
 while(True):
 	# Capture frame-by-frame
 	ret, frame = cap.read()
-	frame = cv2.resize(frame, (frame.shape[1] // 2, frame.shape[0] // 2))
+	# frame = cv2.resize(frame, (frame.shape[1] // 2, frame.shape[0] // 2))
 	width = (frame.shape[1] if frame.shape[1] < frame.shape[0] else frame.shape[0]) // 2
 	x = frame.shape[1] // 2 
 	y = frame.shape[0] // 2
@@ -61,7 +62,7 @@ while(True):
 		text += LABEL[result.index(label)] + ' : ' + str(round(label*100, 2)) + ', '
 
 	# Display the resulting frame 
-	cv2.putText(frame, text, (10, 15), cv2.FONT_HERSHEY_PLAIN, 1, (255, 255, 0))
+	cv2.putText(frame, text, (5, 30), cv2.FONT_HERSHEY_TRIPLEX, 1, (255, 255, 255))
 	cv2.imshow('frame',frame)
 
 
