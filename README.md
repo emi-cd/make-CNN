@@ -70,7 +70,7 @@ It is debug mode, but example of output.
 ## predict_mov.py
 Demonstrate using by CNN. It shows posibility.  
 If you want to stop this program, please enter 'q'.
-![demo movie](https://github.com/emi-cd/learn-CNN/blob/readme/imgs/demo.png?raw=true)
+[![demo mov](https://github.com/emi-cd/make-CNN/blob/readme/imgs/demo.png?raw=true)](http://www.youtube.com/watch?v=jjC69wbVxvs)
 
 
 # Compare models
