@@ -41,13 +41,13 @@ X = 'X' # Xception
 
 def main(args):
 	if not os.path.isdir(args.traindata):
-		print('Plese choose valid path : ' + args.traindata)
+		print('Please choose valid path : ' + args.traindata)
 		exit(1)
 
 	if args.debug:
 		print('Make data...')
 
-	X_train, X_test, y_train, y_test = make_data(args.traindata, args.traindata + '/' + args.file)
+	X_train, X_test, y_train, y_test = make_data(args.traindata, args.file)
 
 	model = models.Sequential()
 	if args. fine:
@@ -178,8 +178,9 @@ def make_data(train_data_path, file):
 		Y = np_utils.to_categorical(Y, len(LABEL))
 
 	else:
+		file = args.traindata + '/' + file
 		if not os.path.isfile(file):
-			print('Plese choose valid path : ' + file)
+			print('Please choose valid path : ' + file)
 			exit(1)
 		X, Y = joblib.load(open(file, 'rb'))
 
