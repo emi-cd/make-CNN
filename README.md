@@ -5,7 +5,7 @@ There are some ways to make model.
 # Testing environment
 python : 3.6.6  
 Packages : Please look requirements.txt  
-OS : macOS High Sierra 10.13.2
+OS : macOS High Sierra 10.13.2  
 I strongly recommend you to use GPU. Or you should use google colabolatory.
 
 
