@@ -21,7 +21,7 @@ And If want to use processed train_data, please put like XY_224.txt and need not
 ├── Models  
 │   ├── model  
 │   │   ├── logs   
-│   │   │   └── events.out.tfevents...
+│   │   │   └── events.out.tfevents...  
 │   │   └── model.h5  
 │   └── ...  
 └── train_data  
@@ -52,7 +52,7 @@ You can make cnn model.
 	 - VGG16  
 	 - ResNet50  
 	 - InceptionV3  
-   - Xception  
+	 - Xception  
 
 - output
 It is debug mode, but example of output.
