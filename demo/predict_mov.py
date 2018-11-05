@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 """
 	predict_mov.py
+	Copyright (c) 2018 emi
 	~~~~~~~~~~~~~~~~
 
 	Demonstrate using by CNN.
-	This script use USB cam and show posibility.
+	This script use USB camera and show posibility.
 	If you want to stop this program, please enter 'q'.
 
-	Dependency::
-		python : 3.6.* 
+	Test environment::
+		python : 3.6.6 
 		Package : Please see requirements.txt
 
 	Usage::
@@ -25,7 +26,11 @@ IMAGE_SIZE=224
 
 
 def convert_data(image):
+	""" Processing data for CNN.
 
+		:param image: image data :type: `Image` object
+		:return X: processed data : typt: np.array
+	"""
 	X = []
 	image = image.convert("RGB")
 	image = image.resize((IMAGE_SIZE, IMAGE_SIZE))
@@ -40,6 +45,7 @@ def convert_data(image):
 
 
 cap = cv2.VideoCapture(1)
+# Please choice your model!!
 model = load_model('../Models/model/model.h5')
 
 while(True):

@@ -2,12 +2,13 @@
 
 """
 	make_cnn.py
+	Copyright (c) 2018 emi
 	~~~~~~~~~~~~~~~~
 
 	Make CNN models.
 
-	Dependency::
-		python : 3.6.*  
+	Test environment::
+		python : 3.6.6  
 		Package : Please see requirements.txt
 
 	Usage::
@@ -35,7 +36,7 @@ IMAGE_SIZE = 224
 VGG = 'VGG'	# VGG16
 RN = 'RN'	# ResNet50
 I = 'I' 	# InceptionV3
-X = 'X' # Xception
+X = 'X' 	# Xception
 
 
 

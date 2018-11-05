@@ -132,3 +132,6 @@ python make_cnn.py -F -M I
 ```
 python make_cnn.py -F -M X
 ```
+
+# License
+Copyright (c) 2018 emi
